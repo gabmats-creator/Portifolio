@@ -1,0 +1,697 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/Portifolio-Hexo/img/fluid.png">
+  <link rel="icon" href="/Portifolio-Hexo/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Gabriel Matheus Aguilera Silva">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Algoritmos de ordenação, suas definições, prós, contras e implementação. Algoritmos de ordenação Quando falamos sobre algoritmos de ordenação, nos referimos a um conjunto de operações com dados de um">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algoritmos de ordenação">
+<meta property="og:url" content="https://gabmats-creator.github.io/Portifolio-Hexo/2024/05/09/sort-algorithms/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Algoritmos de ordenação, suas definições, prós, contras e implementação. Algoritmos de ordenação Quando falamos sobre algoritmos de ordenação, nos referimos a um conjunto de operações com dados de um">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://lh5.googleusercontent.com/6pdO_dPEbJirJGAOD8hxW9Z08YHPOBs-gxIeyNMcGlT2BkM-Q5xLmmuI2mBPNdEzhY4YPD0XqTrmidQU9WfSk7q5E5CKIzI2jqlI-cQ7SYfketq6cxUBy5Buu19mbu0JPEOeF5XzA1jRLXQLAYqylw">
+<meta property="og:image" content="https://lh4.googleusercontent.com/enE2wUgG1T1d97BLoOUSHpIfmfddvclykTjRP2BrR_t-bq4UewLCTzJWRHbTxusL3o1rUsFo3lt9dO4MPIHo8LDcEaRpQ3XzNt6s8PR9fS8OubM_BlsAvJzLUMkP2zEpHcFhKh0Bk-DJLeWHGfcolHE">
+<meta property="og:image" content="https://lh3.googleusercontent.com/2P85qKcwah9m_ukKOttKQNWxXa6owYfTTHZ2XYE9RAr5hdXfI0aRETmxOl1NiS6uoyWnizrMFV96H0p6bOSnfF05qapY89mJr4HezS9tNISVwZGREkFV12UFftlC6h2LmQno1K8NmD7hJZOSUQwmOw">
+<meta property="og:image" content="https://miro.medium.com/v2/resize:fit:640/format:webp/1*Cm0lz9sqD9EK8R6DJuzrHQ.png">
+<meta property="article:published_time" content="2024-05-09T03:15:11.606Z">
+<meta property="article:modified_time" content="2024-05-09T15:12:40.651Z">
+<meta property="article:author" content="Gabriel Matheus Aguilera Silva">
+<meta property="article:tag" content="Pré Cálculo">
+<meta property="article:tag" content="Ordenação">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lh5.googleusercontent.com/6pdO_dPEbJirJGAOD8hxW9Z08YHPOBs-gxIeyNMcGlT2BkM-Q5xLmmuI2mBPNdEzhY4YPD0XqTrmidQU9WfSk7q5E5CKIzI2jqlI-cQ7SYfketq6cxUBy5Buu19mbu0JPEOeF5XzA1jRLXQLAYqylw">
+  
+  
+  
+  <title>Algoritmos de ordenação - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/Portifolio-Hexo/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/Portifolio-Hexo/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/Portifolio-Hexo/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"gabmats-creator.github.io","root":"/Portifolio-Hexo/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/Portifolio-Hexo/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/Portifolio-Hexo/js/utils.js" ></script>
+  <script  src="/Portifolio-Hexo/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/Portifolio-Hexo/">
+      <strong>Portifólio</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Portifolio-Hexo/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Início</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Portifolio-Hexo/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Postagens</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Portifolio-Hexo/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categorias</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/Portifolio-Hexo/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/Portifolio-Hexo/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Algoritmos de ordenação"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-05-09 00:15" pubdate>
+          May 9, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          311 words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Algoritmos de ordenação</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Algoritmos de ordenação, suas definições, prós, contras e implementação.</p>
+<h1 id="Algoritmos-de-ordenacao"><a href="#Algoritmos-de-ordenacao" class="headerlink" title="Algoritmos de ordenação"></a>Algoritmos de ordenação</h1><br>
+Quando falamos sobre algoritmos de ordenação, nos referimos a um conjunto de operações com dados de um array ou lista de forma a organizá-los em uma ordem específica, existem várias maneiras de ordenar uma lista, alguns são mais estáveis, outros possuem performance melhor, ou realizam a ordenação de forma mais rápida
+
+<p>Dentre os algoritmos de ordenação, podemos destacar:</p>
+<ul>
+<li>Bubble Sort</li>
+<li>Selection Sort</li>
+<li>Insertion Sort</li>
+<li>Merge Sort</li>
+</ul>
+<h2 id="Bubble-Sort"><a href="#Bubble-Sort" class="headerlink" title="Bubble Sort"></a>Bubble Sort</h2><p>O algoritmo bubble sort parte do início da lista comparando pares de elementos adjacentes e os troca se estiverem fora de ordem. Este processo é repetido para todos os n-1 elementos até que todos os elementos estejam na ordem correta.<br><img src="https://lh5.googleusercontent.com/6pdO_dPEbJirJGAOD8hxW9Z08YHPOBs-gxIeyNMcGlT2BkM-Q5xLmmuI2mBPNdEzhY4YPD0XqTrmidQU9WfSk7q5E5CKIzI2jqlI-cQ7SYfketq6cxUBy5Buu19mbu0JPEOeF5XzA1jRLXQLAYqylw" srcset="/Portifolio-Hexo/img/loading.gif" lazyload alt="Bubble Sort"></p>
+<p>Implementação em Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">bubble_sort</span>(<span class="hljs-params">simple_array</span>):<br>  max_pos = <span class="hljs-built_in">len</span>(simple_array) - <span class="hljs-number">1</span><br>  count = <span class="hljs-number">0</span><br><br>  <span class="hljs-keyword">while</span> max_pos &gt; <span class="hljs-number">0</span>:<br>    <span class="hljs-keyword">if</span> count &lt; max_pos:<br>      <span class="hljs-keyword">if</span> simple_array[count] &gt; simple_array[count + <span class="hljs-number">1</span>]:<br>        aux = simple_array[count]<br>        simple_array[count] = simple_array[count + <span class="hljs-number">1</span>]<br>        simple_array[count + <span class="hljs-number">1</span>] = aux<br><br>    <span class="hljs-keyword">if</span> count == max_pos:<br>      max_pos -= <span class="hljs-number">1</span><br>      count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">else</span>:<br>      count += <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection Sort"></a>Selection Sort</h2><p>O algoritmo de ordenação por seleção funciona encontrando o menor elemento em uma lista não ordenada e movendo-o para a primeira posição. Isso é repetido em cada iteração, reduzindo o tamanho da lista não ordenada até que todos os elementos estejam em ordem.<br><img src="https://lh4.googleusercontent.com/enE2wUgG1T1d97BLoOUSHpIfmfddvclykTjRP2BrR_t-bq4UewLCTzJWRHbTxusL3o1rUsFo3lt9dO4MPIHo8LDcEaRpQ3XzNt6s8PR9fS8OubM_BlsAvJzLUMkP2zEpHcFhKh0Bk-DJLeWHGfcolHE" srcset="/Portifolio-Hexo/img/loading.gif" lazyload alt="Selection Sort"></p>
+<p>Implementação em Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">selection_sort</span>(<span class="hljs-params">simple_array</span>):<br>    n = <span class="hljs-built_in">len</span>(simple_array)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(n):<br>        <span class="hljs-comment"># Encontra o elemento mínimo no array.</span><br>        min_element = i<br>        <span class="hljs-comment"># compara o elemento na posição minimo com todos os outros i + 1 elementos</span><br>        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(i + <span class="hljs-number">1</span>, n):<br>            <span class="hljs-keyword">if</span> simple_array[min_element] &gt; simple_array[j]:<br>                min_element = j<br>        <span class="hljs-comment"># Coloca o elemento mínimo na posição correspondente.</span><br>        aux = simple_array[i]<br>        simple_array[i] = simple_array[min_element] <br>        simple_array[min_element] = aux<br></code></pre></td></tr></table></figure>
+
+<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h2><p>O algoritmo de ordenação insertion sort funciona de forma iterativa, onde a lista é dividida em duas partes: uma parte ordenada e uma parte ainda não ordenada. Em cada iteração, o algoritmo pega um elemento da parte não ordenada e o insere na posição correta na parte ordenada, expandindo assim a seção ordenada da lista. Esse processo é repetido até que todos os elementos estejam na posição correta e a lista esteja totalmente ordenada.<br><img src="https://lh3.googleusercontent.com/2P85qKcwah9m_ukKOttKQNWxXa6owYfTTHZ2XYE9RAr5hdXfI0aRETmxOl1NiS6uoyWnizrMFV96H0p6bOSnfF05qapY89mJr4HezS9tNISVwZGREkFV12UFftlC6h2LmQno1K8NmD7hJZOSUQwmOw" srcset="/Portifolio-Hexo/img/loading.gif" lazyload alt="Insertion Sort"></p>
+<p>Implementação em Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">insertion_sort</span>(<span class="hljs-params">simple_array</span>):<br>    n = <span class="hljs-built_in">len</span>(simple_array)<br><br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>, n):<br>        chave = simple_array[j]<br>        i = j - <span class="hljs-number">1</span><br>        <span class="hljs-comment"># Insere o elemento simple_array[j] na posição correta.</span><br>        <span class="hljs-keyword">while</span> i &gt;= <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> simple_array[i] &gt; chave:<br>            simple_array[i + <span class="hljs-number">1</span>] = simple_array[i]<br>            i = i - <span class="hljs-number">1</span><br>        simple_array[i + <span class="hljs-number">1</span>] = chave<br></code></pre></td></tr></table></figure>
+<h2 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h2><p>O Merge Sort é um algoritmo eficiente que divide a lista em subgrupos menores, ordena cada subgrupo e, em seguida, combina-os de forma ordenada até que a lista inteira esteja ordenada. Ele é conhecido por sua eficiência em lidar com grandes conjuntos de dados.<br><img src="https://miro.medium.com/v2/resize:fit:640/format:webp/1*Cm0lz9sqD9EK8R6DJuzrHQ.png" srcset="/Portifolio-Hexo/img/loading.gif" lazyload alt="Merge Sort"></p>
+<p>Implementação em Python</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">merge</span>(<span class="hljs-params">simple_array, aux, left, center, right</span>):<br>    <span class="hljs-comment"># Une dois vetores ordenados em um único vetor (também ordenado).</span><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left, right + <span class="hljs-number">1</span>):<br>        aux[k] = simple_array[k]<br>    i = left<br>    j = center + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">for</span> k <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(left, right + <span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> i &gt; center:<br>            simple_array[k] = aux[j]<br>            j += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">elif</span> j &gt; right:<br>            simple_array[k] = aux[i]<br>            i += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">elif</span> aux[j] &lt; aux[i]:<br>            simple_array[k] = aux[j]<br>            j += <span class="hljs-number">1</span><br>        <span class="hljs-keyword">else</span>:<br>            simple_array[k] = aux[i]<br>            i += <span class="hljs-number">1</span><br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">merge_sort</span>(<span class="hljs-params">simple_array, aux, left, right</span>):<br>    <span class="hljs-keyword">if</span> right &lt;= left:<br>        <span class="hljs-keyword">return</span><br>    meio = (left + right) // <span class="hljs-number">2</span><br><br>    <span class="hljs-comment"># Ordena a primeira metade do array.</span><br>    merge_sort(simple_array, aux, left, meio)<br><br>    <span class="hljs-comment"># Ordena a segunda metade do array.</span><br>    merge_sort(simple_array, aux, meio + <span class="hljs-number">1</span>, right)<br><br>    <span class="hljs-comment"># Une as duas metades ordenadas anteriormente.</span><br>    merge(simple_array, aux, left, meio, right)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Complexidade-de-cada-algoritmo-de-ordenacao"><a href="#Complexidade-de-cada-algoritmo-de-ordenacao" class="headerlink" title="Complexidade de cada algoritmo de ordenação"></a>Complexidade de cada algoritmo de ordenação</h2><p>Cada algoritmo de ordenação opera de maneira diferente sobre os dados, sendo assim, cada um possui uma complexidade de execução diferente, a seguir temos uma tabela exibindo a complexidade na notação Big-O para cada caso de cada algoritmo de ordenação mencionado anteriormente</p>
+<table>
+<thead>
+<tr>
+<th>Algoritmo</th>
+<th>Melhor caso</th>
+<th>Caso médio</th>
+<th>Pior caso</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Bubble Sort</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+</tr>
+<tr>
+<td>Selection Sort</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+</tr>
+<tr>
+<td>Insertion Sort</td>
+<td>O(n)</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+</tr>
+<tr>
+<td>Merge Sort</td>
+<td>O(n<code>logn</code>n)</td>
+<td>O(n<code>log</code>n)</td>
+<td>O(n<code>log</code>n)</td>
+</tr>
+</tbody></table>
+<h2 id="Ambiente-de-execucao-dos-algoritmos"><a href="#Ambiente-de-execucao-dos-algoritmos" class="headerlink" title="Ambiente de execução dos algoritmos"></a>Ambiente de execução dos algoritmos</h2><p>A fim de permitir que os algoritmos listados acima sejam executados e testados, criei um notebook no Google Colaboratory com cada um dos algoritmos ordenando um array aleatório, exibindo o array de entrada e o array de saída para cada caso.</p>
+<p>Acesse ao Google Colaboratory para poder testar na prática os algoritmos implementados clicando <a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/19Krc5Q4iEmvzSWYK_1drKyoewGrG7jtB?usp=sharing">aqui</a></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/Portifolio-Hexo/categories/Tarefas-de-calculo/" class="category-chain-item">Tarefas de cálculo</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/Portifolio-Hexo/tags/Pre-Calculo/" class="print-no-link">#Pré Cálculo</a>
+      
+        <a href="/Portifolio-Hexo/tags/Ordenacao/" class="print-no-link">#Ordenação</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Algoritmos de ordenação</div>
+      <div>https://gabmats-creator.github.io/Portifolio-Hexo/2024/05/09/sort-algorithms/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Autor</div>
+          <div>Gabriel Matheus Aguilera Silva</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Postado em</div>
+          <div>May 9, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/Portifolio-Hexo/2024/05/09/binary-search-1/" title="Busca Binária">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Busca Binária</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/Portifolio-Hexo/js/events.js" ></script>
+<script  src="/Portifolio-Hexo/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/Portifolio-Hexo/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/Portifolio-Hexo/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/Portifolio-Hexo/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
