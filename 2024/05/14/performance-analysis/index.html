@@ -23,14 +23,12 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="Análise da complexidade temporal e eficácia dos algoritmos de ordenação. Análise performáticaAnálise temporal Nesta sessão, iremos analisar o desempenho de cada um dos algoritmos previamente estudados">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://gabmats-creator.github.io/Portifolio/images/grafico.png">
 <meta property="article:published_time" content="2024-05-14T22:33:32.812Z">
-<meta property="article:modified_time" content="2024-05-15T23:17:13.077Z">
+<meta property="article:modified_time" content="2024-06-11T15:25:29.334Z">
 <meta property="article:author" content="Gabriel Matheus Aguilera Silva">
 <meta property="article:tag" content="Pré Cálculo">
 <meta property="article:tag" content="Ordenação">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gabmats-creator.github.io/Portifolio/images/grafico.png">
   
   
   
@@ -211,7 +209,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          210 words
+          59 words
         
       </span>
     
@@ -222,7 +220,7 @@
         
         
         
-          2 mins
+          1 mins
         
       </span>
     
@@ -273,7 +271,7 @@ Nesta sessão, iremos analisar o desempenho de cada um dos algoritmos previament
 - Merge Sort
 
 <p>Iremos analisar quanto tempo cada um dos algoritmos leva para ordenar um arranjo de <code>n</code> elementos, sendo <code>n</code> um parâmetro que irá variar de tamanho, iremos analisar quanto cada algoritmo leva para ordenar de forma crescente o arranjo escolhido e exibir na tabela abaixo, que exibe o tempo, em segundos, em que cada algoritmo leva para ordenar <code>n</code> elementos que aqui serão apresentados na ordem de 8 para aumentar rapidamente a quantidade de elementos no arranjo apresentado:</p>
-<p>Algoritmos de ordenação e quanto cada um levou para ordenar elementos na potência de 8</p>
+<p>Algoritmos de ordenação e quanto cada um levou (tempo (segundos)) para ordenar elementos na potência de 8</p>
 <table>
 <thead>
 <tr>
@@ -318,14 +316,7 @@ Nesta sessão, iremos analisar o desempenho de cada um dos algoritmos previament
 <td>0.181762</td>
 </tr>
 </tbody></table>
-<h2 id="Analise-grafica-do-desempenho"><a href="#Analise-grafica-do-desempenho" class="headerlink" title="Análise gráfica do desempenho"></a>Análise gráfica do desempenho</h2><p>Em python, podemos usar um conjunto de bibliotecas para realizar a análise do desempenho de cada algoritmo em função do tamanho do array informado, e receber um retorno em lista. Usei o mesmo padrão de seguir as potências de 8, de 8¹ até 8⁵ para representar os tamanhos do array a ser ordenado.</p>
-<p>O código para realizar isso é o seguinte:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">generate_random_array</span>(<span class="hljs-params">size</span>):<br>    <span class="hljs-keyword">return</span> [random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">1000</span>) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(size)]<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">test_sorting_algorithm</span>(<span class="hljs-params">algorithm, arr</span>):<br>    start_time = time.time()<br><br>    sorted_arr = algorithm(arr.copy())<br><br>    end_time = time.time()<br>    <span class="hljs-keyword">return</span> sorted_arr, end_time - start_time<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">plot_performance</span>(<span class="hljs-params">algorithms, sizes</span>):<br>    time_data = &#123;algo.__name__: [] <span class="hljs-keyword">for</span> algo <span class="hljs-keyword">in</span> algorithms&#125;<br><br>    <span class="hljs-keyword">for</span> size <span class="hljs-keyword">in</span> sizes:<br>        arr = generate_random_array(size)<br>        <span class="hljs-keyword">for</span> algorithm <span class="hljs-keyword">in</span> algorithms:<br>            _, time_taken = test_sorting_algorithm(algorithm, arr)<br>            time_data[algorithm.__name__].append(time_taken)<br><br>    plt.figure(figsize=(<span class="hljs-number">10</span>, <span class="hljs-number">6</span>))<br>    <span class="hljs-keyword">for</span> algo, times <span class="hljs-keyword">in</span> time_data.items():<br>        plt.plot(sizes, times, label=algo)<br>    plt.xlabel(<span class="hljs-string">&#x27;Tamanho da lista&#x27;</span>)<br>    plt.ylabel(<span class="hljs-string">&#x27;Tempo (s)&#x27;</span>)<br>    plt.title(<span class="hljs-string">&#x27;Performance of Sorting Algorithms&#x27;</span>)<br>    plt.legend()<br>    plt.grid(<span class="hljs-literal">True</span>)<br>    plt.show()<br><br>algorithms = [bubble_sort, selection_sort, insertion_sort, merge_sort]<br>sizes = [<span class="hljs-number">8</span>**<span class="hljs-number">1</span>, <span class="hljs-number">8</span>**<span class="hljs-number">2</span>, <span class="hljs-number">8</span>**<span class="hljs-number">3</span>, <span class="hljs-number">8</span>**<span class="hljs-number">4</span>, <span class="hljs-number">8</span>**<span class="hljs-number">5</span>]<br><br>plot_performance(algorithms, sizes)<br></code></pre></td></tr></table></figure>
-
-<p>Vale ressaltar que é necessário usar os códigos implementados anteriormente em conjunto com esse para que funcione corretamente.</p>
-<p>O gráfico retornado por esse algoritmo foi o seguinte:<br><img src="/Portifolio/images/grafico.png" srcset="/Portifolio/img/loading.gif" lazyload alt="Gráfico de tempo de execução (em segundos) x tamanho da lista"></p>
-<p>Podemos analisar, por meio do gráfico, que o método Merge Sort é o mais consistente e eficiente pois independente do tamanho do array informado, seu tempo para ordenar é praticamente o mesmo. Os métodos Insertion Sort e Selection Sort têm desempenho praticamente idêntico e ficam no meio do caminho, pois seus tempos de execução aumentam conforme o tamanho array aumenta, porém não de forma tão acentuada quanto o Bubble Sort, que após atingida uma certa quantidade de elementos no array, seu uso fica praticamente inviável em termos de custo operacional e tempo de execução.</p>
-<h2 id="Implementacao-unida-com-os-algoritmos-de-ordenacao"><a href="#Implementacao-unida-com-os-algoritmos-de-ordenacao" class="headerlink" title="Implementação unida com os algoritmos de ordenação"></a>Implementação unida com os algoritmos de ordenação</h2><p>O algoritmo utilizado para esta análise, tanto em termos de resultado dos tempos de execução quanto em análise gráfica está disponível no Google Colaboratory criado <a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1VTFVm0ulEx44FPTrEXI_MTnie-GToGdf?usp=sharing">aqui</a>, e pode ser usado para maiores testes.</p>
+<h2 id="Implementacao-unida-com-os-algoritmos-de-ordenacao"><a href="#Implementacao-unida-com-os-algoritmos-de-ordenacao" class="headerlink" title="Implementação unida com os algoritmos de ordenação"></a>Implementação unida com os algoritmos de ordenação</h2><p>O algoritmo utilizado para esta análise está disponível no Google Colaboratory criado <a target="_blank" rel="noopener" href="https://colab.research.google.com/drive/1VTFVm0ulEx44FPTrEXI_MTnie-GToGdf?usp=sharing">aqui</a>, e pode ser usado para maiores testes.</p>
 
                 
               </div>
@@ -417,12 +408,18 @@ Nesta sessão, iremos analisar o desempenho de cada um dos algoritmos previament
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/Portifolio/2024/06/11/curva-de-tendencia/" title="Curva de tendência dos algoritmos de ordenação">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Curva de tendência dos algoritmos de ordenação</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/Portifolio/2024/05/09/binary-search-1/" title="Busca Binária">
-                        <span class="hidden-mobile">Busca Binária</span>
+                      <a href="/Portifolio/2024/05/10/sort-algorithms/" title="Algoritmos de ordenação">
+                        <span class="hidden-mobile">Algoritmos de ordenação</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
